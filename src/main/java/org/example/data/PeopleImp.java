@@ -69,6 +69,7 @@ public class PeopleImp implements People{
 
     @Override
     public Collection<Person> findByName(String name) {
+
         String query = "select * from person where first_name = ?";
         Collection<Person> list = new ArrayList<>();
 
