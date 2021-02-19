@@ -42,9 +42,11 @@ public class App {
 //        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 //        System.out.println(td.create(new Todo(3,"Assignment","Programming", sqlDate,true,10)));
           System.out.println("################################");
-          Collection<Todo> todo2 = td.findAll();
-          todo2.forEach(System.out::println);
-          System.out.println("################################");
+//          Collection<Todo> todo2 = td.findAll();
+//          todo2.forEach(System.out::println);
+//          System.out.println("################################");
+//          System.out.println(td.findByID(1));
+           System.out.println("################################");
 
 
 

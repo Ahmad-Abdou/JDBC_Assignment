@@ -63,7 +63,29 @@ public class TodoItemsImpl implements  TodoItems{
 
     @Override
     public Todo findByID(int id) {
-        return null;
+        String query = "Select * from todo_item where todo_id = ?";
+        Todo todo = new Todo();
+
+        try(PreparedStatement  preparedStatement = MySqlConnection.connect().prepareStatement(query);
+        ) {
+            preparedStatement.setInt(1,id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet.next()){
+                todo.setId(resultSet.getInt(1));
+                todo.setTitle(resultSet.getString(2));
+                todo.setDescription(resultSet.getString(3));
+                todo.setDeadLine(resultSet.getDate(4));
+                todo.setDone(resultSet.getBoolean(5));
+                todo.setAssignee_id(resultSet.getInt(6));
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return todo;
     }
 
     @Override
