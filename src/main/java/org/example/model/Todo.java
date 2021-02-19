@@ -15,6 +15,14 @@ public class Todo {
     public Todo() {
     }
 
+    public Todo(int id, String title, String description, Date deadLine, boolean done) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.deadLine = deadLine;
+        this.done = done;
+    }
+
     public Todo(int id, String title, String description, Date deadLine, boolean done, int assignee_id) {
         this.id = id;
         this.title = title;
