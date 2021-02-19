@@ -6,7 +6,9 @@ import org.example.data.TodoItemsImpl;
 import org.example.model.Todo;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 public class App {
     public static void main(String[] args) {
@@ -35,10 +37,15 @@ public class App {
 
         //                    TODO
         System.out.println("Todo");
-        TodoItemsImpl todo = new TodoItemsImpl();
-        java.util.Date utilDate = new java.util.Date();
-        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-        System.out.println(todo.create(new Todo(2,"Homework","doing home work", sqlDate,true,9)));
+        TodoItemsImpl td = new TodoItemsImpl();
+//        java.util.Date utilDate = new java.util.Date();
+//        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+//        System.out.println(td.create(new Todo(3,"Assignment","Programming", sqlDate,true,10)));
+          System.out.println("################################");
+          Collection<Todo> todo2 = td.findAll();
+          todo2.forEach(System.out::println);
+          System.out.println("################################");
+
 
 
 

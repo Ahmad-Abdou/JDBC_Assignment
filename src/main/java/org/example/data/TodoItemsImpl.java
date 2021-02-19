@@ -6,8 +6,11 @@ import org.example.model.Todo;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class TodoItemsImpl implements  TodoItems{
     @Override
@@ -33,7 +36,29 @@ public class TodoItemsImpl implements  TodoItems{
 
     @Override
     public Collection<Todo> findAll() {
-        return null;
+        String query = "Select * from todo_item";
+        Collection<Todo> list = new ArrayList<>();
+        Todo todo = new Todo();
+
+        try (PreparedStatement preparedStatement = MySqlConnection.connect().prepareStatement(query);
+        ) {
+
+              ResultSet resultSet = preparedStatement.executeQuery();
+              while (resultSet.next()){
+                  list.add(new Todo(resultSet.getInt(1),
+                          resultSet.getString(2),
+                          resultSet.getString(3),
+                          resultSet.getDate(4),
+                          resultSet.getBoolean(5),
+                          resultSet.getInt(6)));
+              }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return list;
     }
 
     @Override
